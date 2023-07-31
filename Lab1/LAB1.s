@@ -1,12 +1,9 @@
-#lab 1 casa realizado por Maria Teresa Nogueira nº100029 & Inês Cardoso Paiva nº99961
-#===================================================================================#
-	
-	.data
+.data
 
 x:	.word	1
 y:	.word	1
 
-	.text
+.text
 
 la x10,x 
 lw x11,0(x10) 		#x = 1
@@ -14,8 +11,7 @@ la x12,y
 lw x13,0(x12) 		#y = 1
 
 li x14, 0x00 		#i = 1
-li x15, 0x08 		#MAX=8, o loop é iniciado apenas no terceiro valor da sequencia
-
+li x15, 0x08 		#MAX=8, loop initiated in the sequence's third value
 
 forloop:
 bge x14,x15 out

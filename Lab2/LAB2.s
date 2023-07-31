@@ -1,64 +1,32 @@
-#Lab 2 exerc?cio surpresa
-# Ines Cardoso Paiva 99961 & Maria Teresa Ramos Nogueira 100029	
-
 	.data
-
 A:	.word	1
 B:	.word	1
-C:	.word	1
-D:	.word	1
 
 	.text
 
-rede_neuronal:
-la x18,D
+rede_neuronal_xor:
+la x18,B
 lw x10,A
 lw x11,B
 li x12, 2
 li x13,1
 
 jal x1, neuronio
-sw x16,4(x18)   #c
-#addi sp, sp, 8
+sw x16,4(x18)
+
 lw x10,B
 lw x11,A
 
 jal x1,neuronio
-sw x16,8(x18)   #d
-#addi sp, sp, 8
+sw x16,8(x18)
+
 lw x10,8(x18)
 lw x11,4(x18)
-sub x11,zero,x11 #Garante que o c n?o seja colocado a negativo na funcao multiplica
+sub x11,zero,x11
 
 jal x1,neuronio
-sw x16,12(x18)  #y = (a xor b)
+sw x16,12(x18)
 mv x10, x16
-
-lw x10, C
-lw x11, D
-jal x1, neuronio
-sw x16,16(x18)   #c_(c xor d)
-#addi sp, sp,8
-lw x10,D
-lw x11,C
-
-jal x1,neuronio
-sw x16,20(x18)   #d_(c xor b)
-#addi sp, sp, 8
-lw x10,20(x18)
-lw x11,16(x18)
-sub x11,zero,x11
-
-jal x1,neuronio
-sw x16,24(x18)  #Y = (c xor d)
-
-#chamada_da_or
-lw x10,24(x18)
-lw x11,12(x18)
-sub x11,zero,x11
-
-jal x1, neuronio #(a xor b) or (c xor d)
-mv x10,x16       # Faz print do resultado na consola
 
 li x17, 1
 ecall
@@ -99,7 +67,6 @@ addi sp, sp, 4
 ret
 
 
-
 multiplica:
 addi sp, sp, -16
 sw	x10,12(sp)
@@ -133,3 +100,6 @@ lw x10,12(sp)
 addi sp, sp, 16
 
 ret
+
+
+
